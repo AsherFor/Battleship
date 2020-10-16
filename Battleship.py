@@ -20,10 +20,10 @@ def place_pieces():
 
 
 def player_1_turn():
-# Player 1 picks a row and a column to try and sink a ship
+# Player 1 picks a row and a column on Player 2 board to try and sink a ship
 
 def player_2_turn():
-# Player 2 picks a row and a column to try and sink a ship
+# Player 2 picks a row and a column on Player 1 board to try and sink a ship
 
 
 def didIWin():
