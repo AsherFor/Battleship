@@ -9,14 +9,14 @@ def welcome():
 
 
 def player1_board():
-# Draw the board
+# Player 1 board
 
 def player2_board():
-# Draw the board
+# Player 2 board
 
 def place_pieces():
-# Player 1 is going to place their pieces on their board
-# Player 2 is going to place their pieces on their board
+# Player 1 is going to place their ships on their board
+# Player 2 is going to place their ships on their board
 
 
 def player_1_turn():
@@ -34,8 +34,8 @@ def didIWin():
 
 
 def game_play():
-# Player 1 places pieces
-# Player 2 places pieces
+# Player 1 places their ships
+# Player 2 places their ships
 # Player 1 turn to try and sink a ship
 # Check to see if a ship was sunk or if anyone won
 # Player 2 turn to try and sink a ship
