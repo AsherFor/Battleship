@@ -4,7 +4,7 @@ Battleship
 10/16/20
 '''
 
-def Welcome():
+def welcome():
 # Greeting
 
 
