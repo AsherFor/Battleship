@@ -49,7 +49,7 @@ def ship_placement():
 
 def game_play():
 # This will be the gameplay. The players will take turns trying to sink the other person's ships
-# The loops necessary
+# Add loops
 # player1_board()
 # player_1_turn()
 # shipsunk_player1()
