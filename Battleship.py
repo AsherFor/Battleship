@@ -33,7 +33,7 @@ def didIWin():
 
 
 
-def game_player():
+def game_play():
 # Player 1 places pieces
 # Player 2 places pieces
 # Player 1 turn to try and sink a ship
