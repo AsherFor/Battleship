@@ -5,7 +5,7 @@ Battleship
 '''
 
 def welcome():
-# Greeting
+# Greeting the players
 
 
 def player1_board():
