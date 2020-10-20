@@ -12,7 +12,7 @@ def player1_board():
     # Draw player 1 board
 
 def player2_board():
-    #Draw player 2 board
+    # Draw player 2 board
 
 def player_1_place_ships():
     # Player 1 is going to place their ships on their board
