@@ -179,7 +179,19 @@ def game_play():
         continue_playing()
         if win_factor == True:
             print("Congratulations, Player 1 won the Game!")
-            print("(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)")
+            print("      _             \n"
+                  "    .--' |                \n"
+                  "   /___^ |     .--.       \n"
+                  "       ) |    /    \      \n"
+                  "      /  |  /`      '.    \n"
+                  "     |   '-'    /     \   \n"
+                  "     \         |      |\  \n"
+                  "      \    /   \      /\| \n"
+                  "       \  /'----`\   /    \n"
+                  "       |||        |||     \n"
+                  "       ((|        ((|     \n"
+                  "       |||        |||     \n"
+                  "      //_(       //_       ")
             play_again_end = input("Type y to play again or n to end: ")
             upper_case_play_again_end = play_again_end.upper()
             if upper_case_play_again_end == "Y":
