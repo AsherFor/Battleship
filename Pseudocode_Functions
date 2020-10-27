@@ -20,11 +20,11 @@ BOARD_PLAYER_2[5][5]
 PLACE_OPPOSING_SHIPS_ROW = int(0, 5)
 PLACE_OPPOSING_SHIPS_COL = int(0, 5)
 
-if PLACE_OPPOSING_SHIPS_ROW = int(0, 5) then
-    if PLACE_OPPOSING_SHIPS_COL = int(0, 5) then
-        if BOARD_PLAYER_2[PLACE_OPPOSING_SHIPS_ROW][PLACE_OPPOSING_SHIPS_COL] = "C" or "U" then
+if FIRE_OPPOSING_SHIPS_ROW = int(0, 5) then
+    if FIRE_OPPOSING_SHIPS_COL = int(0, 5) then
+        if BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "C" or "U" then
             output "Player 1 hit Player 2's battleship!"
-            output BOARD_PLAYER_2[PLACE_OPPOSING_SHIPS_ROW][PLACE_OPPOSING_SHIPS_COL] = "X"
+            output BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "X"
         else
             output "Player 1 missed and hit the water!"
         end if
