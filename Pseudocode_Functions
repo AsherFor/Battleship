@@ -1,7 +1,7 @@
 This is my player_2_place_ships function //
 It allows for Player 2 to pick a col and a row to place their ships on a board //
 
-BOARD_PLAYER_1[5][5]
+BOARD_PLAYER_1 = [5][5]
 PLACE_SHIPS_ROW = int(0, 5)
 PLACE_SHIPS_COL = int(0, 5)
 
@@ -16,30 +16,38 @@ output BOARD_PLAYER_1
 This is my player_1_turn function //
 It allows for Player 1 to pick a spot on Player 2's board to try and sink a ship //
 
-BOARD_PLAYER_2[5][5]
-PLACE_OPPOSING_SHIPS_ROW = int(0, 5)
-PLACE_OPPOSING_SHIPS_COL = int(0, 5)
+BOARD_PLAYER_2 = [5][5]
+DEF PLAYER_1_TURN():
+    PLACE_OPPOSING_SHIPS_ROW = int(0, 5)
+    PLACE_OPPOSING_SHIPS_COL = int(0, 5)
 
-if FIRE_OPPOSING_SHIPS_ROW = int(0, 5) then
-    if FIRE_OPPOSING_SHIPS_COL = int(0, 5) then
-        if BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "C" or "U" then
-            output "Player 1 hit Player 2's battleship!"
-            output BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "X"
-        else
-            output "Player 1 missed and hit the water!"
+    if FIRE_OPPOSING_SHIPS_ROW = int(0, 5) then
+        if FIRE_OPPOSING_SHIPS_COL = int(0, 5) then
+            if BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "C" or "U" then
+                output "Player 1 hit Player 2's battleship!"
+                output BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "S"
+            else
+                output "Player 1 missed and hit the water!"
+                output BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "M"
+
+            end if
         end if
     end if
-end if
 
 This is my didIWin function //
 It shows if Player 1 or Player 2 has sunk all of the opposing ships //
-BOARD_PLAYER_1[5][5]
-BOARD_PLAYER_2[5][5]
-
-
-
-
-
-
-
-
+Whenever a a place on the board is guessed, the space is replaced with the word "Sunk." The code then counts to see if the string "Sunk" appears 3 times //
+BOARD_PLAYER_1 = [5][5]
+BOARD_PLAYER_2 = [5][5]
+DEF DIDIWIN():
+    WIN_FACTOR = False
+    loop ROW in BOARD_PLAYER_1[5][5]
+        if ROW.COUNT("SUNK") == 3 then
+            WIN_FACTOR = TRUE
+      end if
+end loop
+    loop ROW in BOARD_PLAYER_2[5][5]
+        if ROW.COUNT("SUNK") == 3 then
+            WIN_FACTOR = TRUE
+      end if
+end loop
