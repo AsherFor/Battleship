@@ -3,7 +3,6 @@ Asher Forman
 Battleship
 10/16/20
 '''
-import numpy
 player1_team = " "
 player2_team = " "
 win_factor = False
