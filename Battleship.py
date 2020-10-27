@@ -53,6 +53,14 @@ def draw_player2_board():
     for i in range(5):
         print(board_player_2[i])
 
+def print_player1_board():
+    for i in range(5):
+        print(board_player_1[i])
+
+def print_player2_board():
+    for i in range(5):
+        print(board_player_2[i])
+
 
 def player_1_place_ships():
     global player1_team
@@ -100,11 +108,13 @@ def player_1_turn():
 
 
     if board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] == player2_team:
-        board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "Sunk"
+        board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
         print("Player 1 hit Player 2's battleship!")
     else:
         print("Player 1 missed and hit the water!")
-        board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "Miss"
+        board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
+
+
 
 
 
@@ -120,28 +130,31 @@ def player_2_turn():
     print(f'Player 2 picked row {int_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
 
     if board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] == player1_team:
-        board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "Sunk"
+        board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
         print("Player 2 hit Player 1's battleship!")
     else:
         print("Player 2 missed and hit the water!")
-        board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "Miss"
+        board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
 
-
-    for i in range(5):
-        print(board_player_1[i])
 
 
 def didIWin():
     global win_factor
     for row in board_player_1:
-        if row.count("Sunk") == 3:
+        if row.count("S") == 3:
             win_factor = True
     for row in board_player_2:
-        if row.count("Sunk") == 3:
+        if row.count("S") == 3:
             win_factor = True
 
 
-
+def continue_playing():
+    play_continue = input("Type c to cover your board: ")
+    upper_case_play_continue = play_continue.upper()
+    if upper_case_play_continue == "C":
+        print("\n" * 10)
+    else:
+        continue_playing()
 
 
 def ship_placement():
@@ -161,19 +174,33 @@ def game_play():
     global win_factor
     while win_factor == False:
         player_1_turn()
+        print_player1_board()
         didIWin()
+        continue_playing()
         if win_factor == True:
             print("Congratulations, Player 1 won the Game!")
             print("(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)")
+            play_again_end = input("Type y to play again or n to end: ")
+            upper_case_play_again_end = play_again_end.upper()
+            if upper_case_play_again_end == "Y":
+                game_play()
+            else:
+                print("Game Over!")
+                exit()
         player_2_turn()
+        print_player2_board()
         didIWin()
+        continue_playing()
         if win_factor == True:
             print("Congratulations, Player 1 won the Game!")
             print("(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)")
-
-
+            play_again_end = input("Type y to play again or n to end: ")
+            upper_case_play_again_end = play_again_end.upper()
+            if upper_case_play_again_end == "Y":
+                game_play()
+            else:
+                print("Game Over!")
+                exit()
 game_play()
-
-
 
 
