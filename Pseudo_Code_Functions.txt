@@ -21,7 +21,7 @@ end PLAYER_1_TURN()
 
 This is my didIWin function //
 It shows if Player 1 or Player 2 has sunk all of the opposing ships //
-Whenever a ship on the board is guessed, the space is replaced with the word "S" for Sunk. The code then counts to see if the string "S" appears 3 times in the opposing board //
+Whenever a ship on the board is guessed, the space is replaced with the word "S" for Sunk. The code then counts to see if the string "S" appears 3 times in Player 1 and Player 2's boards //
 
 BOARD_PLAYER_1 = [5][5]
 BOARD_PLAYER_2 = [5][5]
