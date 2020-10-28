@@ -15,7 +15,6 @@ PLAYER_1_TURN()
             else
                 output "Player 1 missed and hit the water!"
                 output BOARD_PLAYER_2[FIRE_OPPOSING_SHIPS_ROW][FIRE_OPPOSING_SHIPS_COL] = "M"
-            end else
         end if
     end if
 end PLAYER_1_TURN()
