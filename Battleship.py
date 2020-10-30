@@ -6,9 +6,10 @@ Battleship
 player1_team = " "
 player2_team = " "
 win_factor = False
+from colored import fg, bg, attr
 
 board_player_1 = [
-    ["Sunk", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " "],
@@ -22,11 +23,18 @@ board_player_2 = [
     [" ", " ", " ", " ", " "]
 ]
 
-
 def welcome():
     global player1_team
     global player2_team
     print("Welcome to Battleship!")
+    print( "                                  )___(                             \n"
+           "                            _______/__/_                            \n"
+           "                   ___     /===========|   ___                      \n"
+           "  ____       __   [\\\]___/____________|__[///]   __                \n"
+           "  \   \_____[\\]__/___________________________\__[//]___            \n"
+           "   \40A                                                 |           \n"
+           "    \                                                  /            \n" 
+           " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       ")
     player1_team = input("Type C to be the Confederates or U to be the Union: ")
     upper_case_choose_team = player1_team.upper()
 
@@ -53,13 +61,37 @@ def draw_player2_board():
     for i in range(5):
         print(board_player_2[i])
 
-def print_player1_board():
-    for i in range(5):
-        print(board_player_1[i])
 
+def print_player1_board():
+    print(f'''%s
+        0 1 2 3 4
+       ___________
+    0 | {board_player_1[0][0]}|{board_player_1[0][1]}|{board_player_1[0][2]}|{board_player_1[0][3]}|{board_player_1[0][4]} |
+      | ~~~~~~~~~~ 
+    1 | {board_player_1[1][0]}|{board_player_1[1][1]}|{board_player_1[1][2]}|{board_player_1[1][3]}|{board_player_1[1][4]} |
+      | ~~~~~~~~~~                                  
+    2 | {board_player_1[2][0]}|{board_player_1[2][1]}|{board_player_1[2][2]}|{board_player_1[2][3]}|{board_player_1[2][4]} |
+      | ~~~~~~~~~~ 
+    3 | {board_player_1[3][0]}|{board_player_1[3][1]}|{board_player_1[3][2]}|{board_player_1[3][3]}|{board_player_1[3][4]} |
+      | ~~~~~~~~~~
+    4 | {board_player_1[4][0]}|{board_player_1[4][1]}|{board_player_1[4][2]}|{board_player_1[4][3]}|{board_player_1[4][4]} |
+       ___________
+    %s''' % (fg(1), attr(0)))
 def print_player2_board():
-    for i in range(5):
-        print(board_player_2[i])
+    print(f'''%s
+        0 1 2 3 4
+       ___________
+    0 | {board_player_2[0][0]}|{board_player_2[0][1]}|{board_player_2[0][2]}|{board_player_2[0][3]}|{board_player_2[0][4]} |
+      | ~~~~~~~~~~ 
+    1 | {board_player_2[1][0]}|{board_player_2[1][1]}|{board_player_2[1][2]}|{board_player_2[1][3]}|{board_player_2[1][4]} |
+      | ~~~~~~~~~~                                  
+    2 | {board_player_2[2][0]}|{board_player_2[2][1]}|{board_player_2[2][2]}|{board_player_2[2][3]}|{board_player_2[2][4]} |
+      | ~~~~~~~~~~ 
+    3 | {board_player_2[3][0]}|{board_player_2[3][1]}|{board_player_2[3][2]}|{board_player_2[3][3]}|{board_player_2[3][4]} |
+      | ~~~~~~~~~~
+    4 | {board_player_2[4][0]}|{board_player_2[4][1]}|{board_player_2[4][2]}|{board_player_2[4][3]}|{board_player_2[4][4]} |
+       ___________
+    %s'''% (fg('sky_blue_3'), attr(0)))
 
 
 def player_1_place_ships():
@@ -75,8 +107,7 @@ def player_1_place_ships():
 
     board_player_1[int_place_ships_row][int_place_ships_col] = player1_team
 
-    for i in range(5):
-        print(board_player_1[i])
+    print_player1_board()
 
 
 
@@ -93,8 +124,7 @@ def player_2_place_ships():
 
     board_player_2[int_place_ships_row][int_place_ships_col] = player2_team
 
-    for i in range(5):
-        print(board_player_2[i])
+    print_player2_board()
 
 def player_1_turn():
     global player2_team
@@ -116,9 +146,6 @@ def player_1_turn():
 
 
 
-
-
-
 def player_2_turn():
     global player1_team
     fire_opposing_ships_row = input("Player 2, guess a row to sink Player 1's ship: ")
@@ -135,6 +162,24 @@ def player_2_turn():
     else:
         print("Player 2 missed and hit the water!")
         board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
+
+
+def clear_board_p1_p2():
+    global board_player_1
+    board_player_1 = [
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "]
+    ]
+    board_player_2 = [
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " "]
+    ]
 
 
 
@@ -158,11 +203,11 @@ def continue_playing():
 
 
 def ship_placement():
-    draw_player1_board()
+    print_player1_board()
     for i in range(3):
         player_1_place_ships()
     print("\n" * 10)
-    draw_player2_board()
+    print_player2_board()
     for i in range(3):
         player_2_place_ships()
     print("\n" * 10)
@@ -179,22 +224,18 @@ def game_play():
         continue_playing()
         if win_factor == True:
             print("Congratulations, Player 1 won the Game!")
-            print("      _             \n"
-                  "    .--' |                \n"
-                  "   /___^ |     .--.       \n"
-                  "       ) |    /    \      \n"
-                  "      /  |  /`      '.    \n"
-                  "     |   '-'    /     \   \n"
-                  "     \         |      |\  \n"
-                  "      \    /   \      /\| \n"
-                  "       \  /'----`\   /    \n"
-                  "       |||        |||     \n"
-                  "       ((|        ((|     \n"
-                  "       |||        |||     \n"
-                  "      //_(       //_       ")
+            print("                                            _         \n"
+                  "                                           | |        \n"
+                  "             ___ ___  _ __   __ _ _ __ __ _| |_ ___   \n"
+                  "            / __/ _ \| '_ \ / _` | '__/ _` | __/ __|  \n"
+                  "           | (_| (_) | | | | (_| | | | (_| | |_\__ \  \n"
+                  "            \___\___/|_| |_|\__, |_|  \__,_|\__|___/  \n"
+                  "                             __/ |                    \n"
+                  "                            |___/       ")
             play_again_end = input("Type y to play again or n to end: ")
             upper_case_play_again_end = play_again_end.upper()
             if upper_case_play_again_end == "Y":
+                clear_board_p1_p2()
                 game_play()
             else:
                 print("Game Over!")
@@ -204,11 +245,19 @@ def game_play():
         didIWin()
         continue_playing()
         if win_factor == True:
-            print("Congratulations, Player 1 won the Game!")
-            print("(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)(^_^)")
+            print("Congratulations, Player 2 won the Game!")
+            print("                                            _         \n"
+                  "                                           | |        \n"
+                  "             ___ ___  _ __   __ _ _ __ __ _| |_ ___   \n"
+                  "            / __/ _ \| '_ \ / _` | '__/ _` | __/ __|  \n"
+                  "           | (_| (_) | | | | (_| | | | (_| | |_\__ \  \n"
+                  "            \___\___/|_| |_|\__, |_|  \__,_|\__|___/  \n"
+                  "                             __/ |                    \n"
+                  "                            |___/       ")
             play_again_end = input("Type y to play again or n to end: ")
             upper_case_play_again_end = play_again_end.upper()
             if upper_case_play_again_end == "Y":
+                clear_board_p1_p2()
                 game_play()
             else:
                 print("Game Over!")
