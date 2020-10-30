@@ -1,6 +1,6 @@
 This is my player_1_turn function //
 It allows for Player 1 to pick a spot on Player 2's board to try and sink a ship //
-Player 1 enters a row and a column to try and sink a ship. If Player 1 chooses a space where there is a ship, the code puts "S" for Sunk. If they miss, the code puts M //
+Player 1 enters a row and a column to try and sink a ship. If Player 1 chooses a space where there is a ship, the code puts "S" for Sunk. If they miss, the code puts "M" for Miss //
 
 BOARD_PLAYER_2 = [5][5]
 PLAYER_1_TURN()
@@ -21,7 +21,7 @@ end PLAYER_1_TURN()
 
 This is my didIWin function //
 It shows if Player 1 or Player 2 has sunk all of the opposing ships //
-Whenever a ship on the board is guessed, the space is replaced with the word "S" for Sunk. The code then counts to see if the string "S" appears 3 times in the opposing board //
+Whenever a ship on the board is guessed, the space is replaced with the word "S" for Sunk. The code then counts to see if the string "S" appears 3 times in Player 1 and Player 2's boards //
 
 BOARD_PLAYER_1 = [5][5]
 BOARD_PLAYER_2 = [5][5]
