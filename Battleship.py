@@ -27,14 +27,14 @@ def welcome():
     global player1_team
     global player2_team
     print("Welcome to Battleship!")
-    print( "                                  )___(                             \n"
+    print("%s                                  )___(                             \n"
            "                            _______/__/_                            \n"
            "                   ___     /===========|   ___                      \n"
            "  ____       __   [\\\]___/____________|__[///]   __                \n"
            "  \   \_____[\\]__/___________________________\__[//]___            \n"
-           "   \40A                                                 |           \n"
+           "   \ Asher's Battleship                                 |           \n"
            "    \                                                  /            \n" 
-           " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       ")
+           " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       %s" % (fg('dark_orange'), attr(0)))
     player1_team = input("Type C to be the Confederates or U to be the Union: ")
     upper_case_choose_team = player1_team.upper()
 
@@ -105,7 +105,8 @@ def player_1_place_ships():
 
     print(f'Player 1 picked row {int_place_ships_row} and column {int_place_ships_col}')
 
-    board_player_1[int_place_ships_row][int_place_ships_col] = player1_team
+    board_player_1[int_place_ships_row][int_place_ships_col] = player1_team.upper()
+
 
     print_player1_board()
 
@@ -122,7 +123,7 @@ def player_2_place_ships():
 
     print(f'Player 2 picked row {int_place_ships_row} and column {int_place_ships_col}')
 
-    board_player_2[int_place_ships_row][int_place_ships_col] = player2_team
+    board_player_2[int_place_ships_row][int_place_ships_col] = player2_team.upper()
 
     print_player2_board()
 
@@ -139,7 +140,17 @@ def player_1_turn():
 
     if board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] == player2_team:
         board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
-        print("Player 1 hit Player 2's battleship!")
+        print("Player 1 hit Player 2's battleship! That was a large explosion!")
+        print("%s             __,-~~/~    `---.            \n"
+              "             _/_,---(      ,    )           \n"
+              "         __ /        <    /   )  \___       \n"
+              "  --===;;;'====------------------===;;;==   \n"
+              "            \/      ~~~~~\~~)~/             \n"
+              "            (_ (   \  (     >    \)         \n"
+              "             \_( _ <         >_>'           \n"
+              "                ~ `-i' ::>|--               \n"
+              "                    I;|.|.|                 \n"
+              "                 __<|i::|i|____  %s" % (fg('grey_58'), attr(0)))
     else:
         print("Player 1 missed and hit the water!")
         board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
@@ -158,7 +169,17 @@ def player_2_turn():
 
     if board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] == player1_team:
         board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
-        print("Player 2 hit Player 1's battleship!")
+        print("Player 2 hit Player 1's battleship! That was a large explosion!")
+        print("%s             __,-~~/~    `---.            \n"
+              "             _/_,---(      ,    )           \n"
+              "         __ /        <    /   )  \___       \n"
+              "  --===;;;'====------------------===;;;==   \n"
+              "            \/      ~~~~~\~~)~/             \n"
+              "            (_ (   \  (     >    \)         \n"
+              "             \_( _ <         >_>'           \n"
+              "                ~ `-i' ::>|--               \n"
+              "                    I;|.|.|                 \n"
+              "                 __<|i::|i|____  %s" % (fg('grey_58'), attr(0)))
     else:
         print("Player 2 missed and hit the water!")
         board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
@@ -166,6 +187,7 @@ def player_2_turn():
 
 def clear_board_p1_p2():
     global board_player_1
+    global board_player_2
     board_player_1 = [
         [" ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " "],
@@ -224,18 +246,19 @@ def game_play():
         continue_playing()
         if win_factor == True:
             print("Congratulations, Player 1 won the Game!")
-            print("                                            _         \n"
+            print("%s                                            _         \n"
                   "                                           | |        \n"
                   "             ___ ___  _ __   __ _ _ __ __ _| |_ ___   \n"
                   "            / __/ _ \| '_ \ / _` | '__/ _` | __/ __|  \n"
                   "           | (_| (_) | | | | (_| | | | (_| | |_\__ \  \n"
                   "            \___\___/|_| |_|\__, |_|  \__,_|\__|___/  \n"
                   "                             __/ |                    \n"
-                  "                            |___/       ")
+                  "                            |___/       %s" % (fg('spring_green_2b'), attr(0)))
             play_again_end = input("Type y to play again or n to end: ")
             upper_case_play_again_end = play_again_end.upper()
             if upper_case_play_again_end == "Y":
                 clear_board_p1_p2()
+                win_factor = False
                 game_play()
             else:
                 print("Game Over!")
@@ -246,18 +269,19 @@ def game_play():
         continue_playing()
         if win_factor == True:
             print("Congratulations, Player 2 won the Game!")
-            print("                                            _         \n"
+            print("%s                                            _         \n"
                   "                                           | |        \n"
                   "             ___ ___  _ __   __ _ _ __ __ _| |_ ___   \n"
                   "            / __/ _ \| '_ \ / _` | '__/ _` | __/ __|  \n"
                   "           | (_| (_) | | | | (_| | | | (_| | |_\__ \  \n"
                   "            \___\___/|_| |_|\__, |_|  \__,_|\__|___/  \n"
                   "                             __/ |                    \n"
-                  "                            |___/       ")
+                  "                            |___/       %s" % (fg('blue_violet'), attr(0)))
             play_again_end = input("Type y to play again or n to end: ")
             upper_case_play_again_end = play_again_end.upper()
             if upper_case_play_again_end == "Y":
                 clear_board_p1_p2()
+                win_factor = False
                 game_play()
             else:
                 print("Game Over!")
