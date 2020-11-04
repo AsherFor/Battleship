@@ -23,6 +23,15 @@ board_player_2 = [
     [" ", " ", " ", " ", " "]
 ]
 
+words_To_numbers = {
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "D": 3,
+    "E": 4
+}
+
+
 def welcome():
     global player1_team
     global player2_team
@@ -66,30 +75,30 @@ def print_player1_board():
     print(f'''%s
         0 1 2 3 4
        ___________
-    0 | {board_player_1[0][0]}|{board_player_1[0][1]}|{board_player_1[0][2]}|{board_player_1[0][3]}|{board_player_1[0][4]} |
+    A | {board_player_1[words_To_numbers['A']][0]}|{board_player_1[words_To_numbers['A']][1]}|{board_player_1[words_To_numbers['A']][2]}|{board_player_1[words_To_numbers['A']][3]}|{board_player_1[words_To_numbers['A']][4]} |
       | ~~~~~~~~~~ 
-    1 | {board_player_1[1][0]}|{board_player_1[1][1]}|{board_player_1[1][2]}|{board_player_1[1][3]}|{board_player_1[1][4]} |
+    B | {board_player_1[words_To_numbers['B']][0]}|{board_player_1[words_To_numbers['B']][1]}|{board_player_1[words_To_numbers['B']][2]}|{board_player_1[words_To_numbers['B']][3]}|{board_player_1[words_To_numbers['B']][4]} |
       | ~~~~~~~~~~                                  
-    2 | {board_player_1[2][0]}|{board_player_1[2][1]}|{board_player_1[2][2]}|{board_player_1[2][3]}|{board_player_1[2][4]} |
+    C | {board_player_1[words_To_numbers['C']][0]}|{board_player_1[words_To_numbers['C']][1]}|{board_player_1[words_To_numbers['C']][2]}|{board_player_1[words_To_numbers['C']][3]}|{board_player_1[words_To_numbers['C']][4]} |
       | ~~~~~~~~~~ 
-    3 | {board_player_1[3][0]}|{board_player_1[3][1]}|{board_player_1[3][2]}|{board_player_1[3][3]}|{board_player_1[3][4]} |
+    D | {board_player_1[words_To_numbers['D']][0]}|{board_player_1[words_To_numbers['D']][1]}|{board_player_1[words_To_numbers['D']][2]}|{board_player_1[words_To_numbers['D']][3]}|{board_player_1[words_To_numbers['D']][4]} |
       | ~~~~~~~~~~
-    4 | {board_player_1[4][0]}|{board_player_1[4][1]}|{board_player_1[4][2]}|{board_player_1[4][3]}|{board_player_1[4][4]} |
+    E | {board_player_1[words_To_numbers['E']][0]}|{board_player_1[words_To_numbers['E']][1]}|{board_player_1[words_To_numbers['E']][2]}|{board_player_1[words_To_numbers['E']][3]}|{board_player_1[words_To_numbers['E']][4]} |
        ___________
     %s''' % (fg(1), attr(0)))
 def print_player2_board():
     print(f'''%s
         0 1 2 3 4
        ___________
-    0 | {board_player_2[0][0]}|{board_player_2[0][1]}|{board_player_2[0][2]}|{board_player_2[0][3]}|{board_player_2[0][4]} |
+    A | {board_player_2[words_To_numbers['A']][0]}|{board_player_2[words_To_numbers['A']][1]}|{board_player_2[words_To_numbers['A']][2]}|{board_player_2[words_To_numbers['A']][3]}|{board_player_2[words_To_numbers['A']][4]} |
       | ~~~~~~~~~~ 
-    1 | {board_player_2[1][0]}|{board_player_2[1][1]}|{board_player_2[1][2]}|{board_player_2[1][3]}|{board_player_2[1][4]} |
+    B | {board_player_2[words_To_numbers['B']][0]}|{board_player_2[words_To_numbers['B']][1]}|{board_player_2[words_To_numbers['B']][2]}|{board_player_2[words_To_numbers['B']][3]}|{board_player_2[words_To_numbers['B']][4]} |
       | ~~~~~~~~~~                                  
-    2 | {board_player_2[2][0]}|{board_player_2[2][1]}|{board_player_2[2][2]}|{board_player_2[2][3]}|{board_player_2[2][4]} |
+    C | {board_player_2[words_To_numbers['C']][0]}|{board_player_2[words_To_numbers['C']][1]}|{board_player_2[words_To_numbers['C']][2]}|{board_player_2[words_To_numbers['C']][3]}|{board_player_2[words_To_numbers['C']][4]} |
       | ~~~~~~~~~~ 
-    3 | {board_player_2[3][0]}|{board_player_2[3][1]}|{board_player_2[3][2]}|{board_player_2[3][3]}|{board_player_2[3][4]} |
+    D | {board_player_2[words_To_numbers['D']][0]}|{board_player_2[words_To_numbers['D']][1]}|{board_player_2[words_To_numbers['D']][2]}|{board_player_2[words_To_numbers['D']][3]}|{board_player_2[words_To_numbers['D']][4]} |
       | ~~~~~~~~~~
-    4 | {board_player_2[4][0]}|{board_player_2[4][1]}|{board_player_2[4][2]}|{board_player_2[4][3]}|{board_player_2[4][4]} |
+    E | {board_player_2[words_To_numbers['E']][0]}|{board_player_2[words_To_numbers['E']][1]}|{board_player_2[words_To_numbers['E']][2]}|{board_player_2[words_To_numbers['E']][3]}|{board_player_2[words_To_numbers['E']][4]} |
        ___________
     %s'''% (fg('sky_blue_3'), attr(0)))
 
@@ -99,13 +108,13 @@ def player_1_place_ships():
     place_ships_row = input("Player 1, choose your row: ")
     place_ships_col = input("Player 1, choose your column: ")
 
-    int_place_ships_row = int(place_ships_row)
+    letter_place_ships_row = words_To_numbers[place_ships_row]
     int_place_ships_col = int(place_ships_col)
 
 
-    print(f'Player 1 picked row {int_place_ships_row} and column {int_place_ships_col}')
+    print(f'Player 1 picked row {letter_place_ships_row} and column {int_place_ships_col}')
 
-    board_player_1[int_place_ships_row][int_place_ships_col] = player1_team.upper()
+    board_player_1[letter_place_ships_row][int_place_ships_col] = player1_team.upper()
 
 
     print_player1_board()
@@ -117,13 +126,13 @@ def player_2_place_ships():
     place_ships_row = input("Player 2, choose your row: ")
     place_ships_col = input("Player 2, choose your column: ")
 
-    int_place_ships_row = int(place_ships_row)
+    letter_place_ships_row = words_To_numbers[place_ships_row]
     int_place_ships_col = int(place_ships_col)
 
 
-    print(f'Player 2 picked row {int_place_ships_row} and column {int_place_ships_col}')
+    print(f'Player 2 picked row {letter_place_ships_row} and column {int_place_ships_col}')
 
-    board_player_2[int_place_ships_row][int_place_ships_col] = player2_team.upper()
+    board_player_2[letter_place_ships_row][int_place_ships_col] = player2_team.upper()
 
     print_player2_board()
 
@@ -132,14 +141,14 @@ def player_1_turn():
     fire_opposing_ships_row = input("Player 1, guess a row to sink Player 2's ship: ")
     fire_opposing_ships_col = input("Player 1, guess a col to sink Player 2's ship: ")
 
-    int_fire_opposing_ships_row = int(fire_opposing_ships_row)
+    letter_fire_opposing_ships_row = words_To_numbers[fire_opposing_ships_row]
     int_fire_opposing_ships_col = int(fire_opposing_ships_col)
 
-    print(f'Player 1 picked row {int_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
+    print(f'Player 1 picked row {letter_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
 
 
-    if board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] == player2_team:
-        board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
+    if board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] == player2_team:
+        board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
         print("Player 1 hit Player 2's battleship! That was a large explosion!")
         print("%s             __,-~~/~    `---.            \n"
               "             _/_,---(      ,    )           \n"
@@ -153,7 +162,7 @@ def player_1_turn():
               "                 __<|i::|i|____  %s" % (fg('grey_58'), attr(0)))
     else:
         print("Player 1 missed and hit the water!")
-        board_player_2[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
+        board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
 
 
 
@@ -162,13 +171,13 @@ def player_2_turn():
     fire_opposing_ships_row = input("Player 2, guess a row to sink Player 1's ship: ")
     fire_opposing_ships_col = input("Player 2, guess a col to sink Player 1's ship: ")
 
-    int_fire_opposing_ships_row = int(fire_opposing_ships_row)
+    letter_fire_opposing_ships_row = words_To_numbers[fire_opposing_ships_row]
     int_fire_opposing_ships_col = int(fire_opposing_ships_col)
 
-    print(f'Player 2 picked row {int_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
+    print(f'Player 2 picked row {letter_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
 
-    if board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] == player1_team:
-        board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
+    if board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] == player1_team:
+        board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
         print("Player 2 hit Player 1's battleship! That was a large explosion!")
         print("%s             __,-~~/~    `---.            \n"
               "             _/_,---(      ,    )           \n"
@@ -182,7 +191,7 @@ def player_2_turn():
               "                 __<|i::|i|____  %s" % (fg('grey_58'), attr(0)))
     else:
         print("Player 2 missed and hit the water!")
-        board_player_1[int_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
+        board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
 
 
 def clear_board_p1_p2():
