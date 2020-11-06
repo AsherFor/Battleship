@@ -3,10 +3,11 @@ Asher Forman
 Battleship
 10/16/20
 '''
+from colored import fg, bg, attr
+import time
 player1_team = " "
 player2_team = " "
 win_factor = False
-from colored import fg, bg, attr
 
 board_player_1 = [
     [" ", " ", " ", " ", " "],
@@ -25,12 +26,16 @@ board_player_2 = [
 
 words_To_numbers = {
     "A": 0,
+    "a": 0,
     "B": 1,
+    "b": 1,
     "C": 2,
+    "c": 2,
     "D": 3,
-    "E": 4
+    "d": 3,
+    "E": 4,
+    "e": 4
 }
-
 
 def welcome():
     global player1_team
@@ -108,6 +113,7 @@ def player_1_place_ships():
     place_ships_row = input("Player 1, choose your row: ")
     place_ships_col = input("Player 1, choose your column: ")
 
+
     letter_place_ships_row = words_To_numbers[place_ships_row]
     int_place_ships_col = int(place_ships_col)
 
@@ -149,7 +155,7 @@ def player_1_turn():
 
     if board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] == player2_team:
         board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
-        print("Player 1 hit Player 2's battleship! That was a large explosion!")
+        print("Player 1 hit Player 2's battleship! Look at that explosion!")
         print("%s             __,-~~/~    `---.            \n"
               "             _/_,---(      ,    )           \n"
               "         __ /        <    /   )  \___       \n"
@@ -160,8 +166,12 @@ def player_1_turn():
               "                ~ `-i' ::>|--               \n"
               "                    I;|.|.|                 \n"
               "                 __<|i::|i|____  %s" % (fg('grey_58'), attr(0)))
+        time.sleep(2)
     else:
         print("Player 1 missed and hit the water!")
+        print("%s  _      _      _      _      _      _      _      _  \n"
+              "  )`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_ %s" % (fg('deep_sky_blue_4c'), attr(0)))
+        time.sleep(2)
         board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
 
 
@@ -178,7 +188,7 @@ def player_2_turn():
 
     if board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] == player1_team:
         board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
-        print("Player 2 hit Player 1's battleship! That was a large explosion!")
+        print("Player 2 hit Player 1's battleship! Look at that explosion!")
         print("%s             __,-~~/~    `---.            \n"
               "             _/_,---(      ,    )           \n"
               "         __ /        <    /   )  \___       \n"
@@ -189,8 +199,12 @@ def player_2_turn():
               "                ~ `-i' ::>|--               \n"
               "                    I;|.|.|                 \n"
               "                 __<|i::|i|____  %s" % (fg('grey_58'), attr(0)))
+        time.sleep(2)
     else:
         print("Player 2 missed and hit the water!")
+        print("%s  _      _      _      _      _      _      _      _  \n"
+              "  )`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_ %s" % (fg('deep_sky_blue_4c'), attr(0)))
+        time.sleep(2)
         board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "M"
 
 
@@ -270,7 +284,7 @@ def game_play():
                 win_factor = False
                 game_play()
             else:
-                print("Game Over!")
+                print("Game Over! Player 1 Won!")
                 exit()
         player_2_turn()
         print_player2_board()
@@ -293,7 +307,7 @@ def game_play():
                 win_factor = False
                 game_play()
             else:
-                print("Game Over!")
+                print("Game Over! Player 2 Won!")
                 exit()
 game_play()
 
