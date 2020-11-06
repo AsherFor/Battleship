@@ -3,7 +3,7 @@ Asher Forman
 Battleship
 10/16/20
 '''
-from colored import fg, bg, attr
+from colored import fg, attr
 import time
 player1_team = " "
 player2_team = " "
@@ -118,8 +118,6 @@ def player_1_place_ships():
     int_place_ships_col = int(place_ships_col)
 
 
-    print(f'Player 1 picked row {letter_place_ships_row} and column {int_place_ships_col}')
-
     board_player_1[letter_place_ships_row][int_place_ships_col] = player1_team.upper()
 
 
@@ -136,8 +134,6 @@ def player_2_place_ships():
     int_place_ships_col = int(place_ships_col)
 
 
-    print(f'Player 2 picked row {letter_place_ships_row} and column {int_place_ships_col}')
-
     board_player_2[letter_place_ships_row][int_place_ships_col] = player2_team.upper()
 
     print_player2_board()
@@ -149,9 +145,6 @@ def player_1_turn():
 
     letter_fire_opposing_ships_row = words_To_numbers[fire_opposing_ships_row]
     int_fire_opposing_ships_col = int(fire_opposing_ships_col)
-
-    print(f'Player 1 picked row {letter_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
-
 
     if board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] == player2_team:
         board_player_2[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
@@ -183,8 +176,6 @@ def player_2_turn():
 
     letter_fire_opposing_ships_row = words_To_numbers[fire_opposing_ships_row]
     int_fire_opposing_ships_col = int(fire_opposing_ships_col)
-
-    print(f'Player 2 picked row {letter_fire_opposing_ships_row} and column {int_fire_opposing_ships_col}')
 
     if board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] == player1_team:
         board_player_1[letter_fire_opposing_ships_row][int_fire_opposing_ships_col] = "S"
@@ -242,7 +233,7 @@ def continue_playing():
     play_continue = input("Type c to cover your board: ")
     upper_case_play_continue = play_continue.upper()
     if upper_case_play_continue == "C":
-        print("\n" * 10)
+        print("\n" * 15)
     else:
         continue_playing()
 
@@ -251,11 +242,11 @@ def ship_placement():
     print_player1_board()
     for i in range(3):
         player_1_place_ships()
-    print("\n" * 10)
+    print("\n" * 15)
     print_player2_board()
     for i in range(3):
         player_2_place_ships()
-    print("\n" * 10)
+    print("\n" * 15)
 
 
 def game_play():
@@ -266,7 +257,6 @@ def game_play():
         player_1_turn()
         print_player1_board()
         didIWin()
-        continue_playing()
         if win_factor == True:
             print("Congratulations, Player 1 won the Game!")
             print("%s                                            _         \n"
@@ -286,10 +276,10 @@ def game_play():
             else:
                 print("Game Over! Player 1 Won!")
                 exit()
+        continue_playing()
         player_2_turn()
         print_player2_board()
         didIWin()
-        continue_playing()
         if win_factor == True:
             print("Congratulations, Player 2 won the Game!")
             print("%s                                            _         \n"
@@ -309,6 +299,7 @@ def game_play():
             else:
                 print("Game Over! Player 2 Won!")
                 exit()
+        continue_playing()
 game_play()
 
 
